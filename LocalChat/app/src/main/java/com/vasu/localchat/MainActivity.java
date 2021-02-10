@@ -17,20 +17,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button clientButton = findViewById(R.id.clientButton);
+        Button clientButton = findViewById(R.id.serverButton);
         clientButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ClientActivity.class);
+                Intent intent = new Intent(MainActivity.this, ServerActivity.class);
                 startActivity(intent);
             }
         });
 
-        Button serverButton = findViewById(R.id.serverButton);
+        Button serverButton = findViewById(R.id.clientButton);
         serverButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ServerActivity.class);
+                Intent intent = new Intent(MainActivity.this, ClientActivity.class);
                 startActivity(intent);
             }
         });
