@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="16dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -23,8 +25,10 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="3dp"
             app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toTopOf="@+id/layout_gchat_chatbox"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -37,22 +41,30 @@
 
 
             <EditText
-                android:layout_marginStart="16dp"
+                android:padding="6dp"
                 android:id="@+id/edit_gchat_message"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/button_gchat_send"
                 android:hint="Enter Message"
                 android:inputType="text"
-                android:maxLines="6"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/edit_text_border"
+                android:maxLines="4"
                 tools:ignore="Autofill" />
 
-            <Button
+
+            <ImageButton
                 android:id="@+id/button_gchat_send"
-                android:layout_width="64dp"
-                android:layout_height="48dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/send_button_background"
+                android:src="@drawable/ic_icon_send"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+
                 android:text="Send" />
 
         </RelativeLayout>

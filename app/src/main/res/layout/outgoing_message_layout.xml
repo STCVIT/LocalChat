@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_layout">
 
    <androidx.cardview.widget.CardView
        android:layout_width="wrap_content"
-       android:backgroundTint="@color/black"
-       android:minWidth="140dp"
+       android:backgroundTint="#eeeeee"
+       app:contentPadding="8dp"
+       android:minWidth="100dp"
+       app:cardCornerRadius="6dp"
+       android:minHeight="40dp"
        android:layout_alignParentRight="true"
        android:layout_height="wrap_content">
 
-       <TextView
-           android:id="@+id/outgoing_tv"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:minWidth="120dp"
-           android:maxWidth="250dp"
-           android:textColor="@color/white"
-           ></TextView>
+
+           <TextView
+               android:id="@+id/outgoing_tv"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:maxWidth="200dp"
+               android:textColor="@color/black"
+               ></TextView>
+
+
 
 
    </androidx.cardview.widget.CardView>

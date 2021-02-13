@@ -20,6 +20,11 @@ import java.util.ArrayList;
 
 public class ChatFragment extends Fragment {
 
+    final String message = "It is a long established fact that a reader will be distracted " +
+            "by the readable content of a page when looking at its layout. " +
+            "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, " +
+            "as opposed to using 'Content here, content here', making it look like readable English. " +
+            " sometimes on purpose (injected humour and the like).";
 
 
     public ChatFragment() {
@@ -43,7 +48,7 @@ public class ChatFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ArrayList<MessageModel> messagesList = new ArrayList<>();
         for (int i=0;i<20;i++) {
-            messagesList.add(new MessageModel("Hi", i % 2 == 0 ? ChatAdapter.MESSAGE_TYPE_IN : ChatAdapter.MESSAGE_TYPE_OUT));
+            messagesList.add(new MessageModel(message, i % 2 == 0 ? ChatAdapter.MESSAGE_TYPE_IN : ChatAdapter.MESSAGE_TYPE_OUT));
         }
 
         ChatAdapter chatAdapter= new ChatAdapter(getContext(),messagesList);
