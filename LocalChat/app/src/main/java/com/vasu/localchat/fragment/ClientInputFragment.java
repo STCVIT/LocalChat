@@ -38,15 +38,13 @@ public class ClientInputFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        Button button = getView().findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                EditText editText = getView().findViewById(R.id.input);
-//                changeText(editText.getText().toString());
-//                Log.i("tag",editText.getText().toString());
-//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.acFragment,new ClientChatFragment()).commit();
-//            }
-//        });
+        Button button = getView().findViewById(R.id.join_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.acFragment,new ChatFragment()).commit();
+            }
+        });
+
     }
 }
