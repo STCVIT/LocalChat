@@ -42,11 +42,11 @@
 
             <EditText
                 android:padding="6dp"
-                android:id="@+id/edit_gchat_message"
+                android:id="@+id/message_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/button_gchat_send"
+                android:layout_toStartOf="@+id/button_msg_send"
                 android:hint="Enter Message"
                 android:inputType="text"
                 android:layout_marginRight="8dp"
@@ -56,7 +56,7 @@
 
 
             <ImageButton
-                android:id="@+id/button_gchat_send"
+                android:id="@+id/button_msg_send"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="8dp"

@@ -12,13 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vasu.localchat.R;
 import com.vasu.localchat.activity.ClientActivity;
 
 
 public class ClientInputFragment extends Fragment {
+
+    EditText serverCodeEditText,usernameEditText;
+    Button joinServerButton;
+    ClientActivity clientActivity;
 
     public ClientInputFragment() {
         // Required empty public constructor
@@ -38,13 +42,27 @@ public class ClientInputFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button button = getView().findViewById(R.id.join_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        findViewById(view);
+        joinServerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.acFragment,new ChatFragment()).commit();
+                String code=serverCodeEditText.getText().toString();
+                Log.i("code",code);
+                if(serverCodeEditText.getText().toString().trim().length()>0 && usernameEditText.getText().toString().trim().length()>0){
+                    clientActivity.startNSD("Test101");
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.acFragment,new ChatFragment()).commit();
+                }else{
+                    Toast.makeText(getContext(),"Empty input field",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+    }
+
+    void findViewById(View view){
+        serverCodeEditText = view.findViewById(R.id.server_code_edit_text);
+        usernameEditText = view.findViewById(R.id.username_edit_text);
+        joinServerButton = view.findViewById(R.id.join_server_button);
+        clientActivity = (ClientActivity) getActivity();
     }
 }

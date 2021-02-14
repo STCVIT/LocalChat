@@ -6,6 +6,9 @@ import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 import android.util.Log;
 
+import com.vasu.localchat.activity.ClientActivity;
+import com.vasu.localchat.fragment.ChatFragment;
+
 import static com.vasu.localchat.util.Constants.CLIENT_TAG;
 import static com.vasu.localchat.util.Constants.NSD_HELPER_TAG;
 import static com.vasu.localchat.util.Constants.SERVICE_TYPE;
@@ -85,8 +88,9 @@ public class NsdHelper {
             public void onServiceFound(NsdServiceInfo serviceInfo) {
                 if(serviceInfo.getServiceName().equals(serviceName)){
                     setServiceInfo(serviceInfo);
-                    Log.d(NSD_HELPER_TAG, "Service Found"+serviceInfo.getPort()+":"+serviceInfo.getHost());
                     nsdManager.resolveService(serviceInfo,nsdResolveListener);
+                    Log.d(NSD_HELPER_TAG, "Service Found"+serviceInfo.getPort()+":"+serviceInfo.getHost());
+                    ChatFragment.connected=1;
                 }
             }
 
