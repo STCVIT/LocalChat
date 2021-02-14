@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.StrictMode;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.vasu.localchat.R;
 import com.vasu.localchat.fragment.ClientInputFragment;
@@ -89,5 +90,6 @@ public class ServerActivity extends AppCompatActivity {
             mBound = false;
         }
     };
+
 
 }

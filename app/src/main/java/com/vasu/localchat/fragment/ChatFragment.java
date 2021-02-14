@@ -155,4 +155,5 @@ public class ChatFragment extends Fragment {
            messagesList.add(new MessageModel(mainMessage,1,name));
        }
     }
+
 }

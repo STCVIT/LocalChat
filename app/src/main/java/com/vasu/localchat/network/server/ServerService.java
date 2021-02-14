@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.vasu.localchat.activity.ServerActivity;
 import com.vasu.localchat.fragment.ChatFragment;
 import com.vasu.localchat.helper.NsdHelper;
 
@@ -75,12 +77,13 @@ public class ServerService extends Service {
         public void SendToClients(String message) throws IOException {
             if(clientHandlers.isEmpty()){
                 Log.d(SERVER_TAG, "No Client Found to Send Message");
+                Toast.makeText(context,"No client found to send message",Toast.LENGTH_SHORT).show();
             }
             else{
                 for(int i=0;i<clientHandlers.size();i++){
                     clientHandlers.get(i).SendToClient(message);
 //                    ServerActivity.setServerReceiveText(message);
-                    Log.d(SERVER_TAG,"Message send to client "+i);
+                    Log.d(SERVER_TAG,"Message sent to client "+i);
                 }
                 ChatFragment.addToList(message);
             }
