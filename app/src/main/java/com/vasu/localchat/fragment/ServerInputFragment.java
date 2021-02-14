@@ -50,7 +50,8 @@ public class ServerInputFragment extends Fragment {
                 if(userNameEditText.getText().toString().trim().length()>0){
                     Log.i("fragment","here");
                     try {
-                        serverActivity.mService.constructor(getContext(),"Test101");
+                        serverActivity.mService.constructor(getContext(),serverActivity.charId);
+                        serverActivity.name = userNameEditText.getText().toString().trim();
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.asFragment,new ChatFragment()).commit();
                     } catch (IOException e) {
                         e.printStackTrace();

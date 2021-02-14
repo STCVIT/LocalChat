@@ -30,6 +30,7 @@ public class ServerActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
         super.onStart();
         Intent intent = new Intent(ServerActivity.this, ServerService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
@@ -37,6 +38,7 @@ public class ServerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MainTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
 

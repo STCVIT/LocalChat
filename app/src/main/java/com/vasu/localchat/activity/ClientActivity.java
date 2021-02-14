@@ -31,6 +31,7 @@ public class ClientActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
         super.onStart();
 //        Binds the service
         Intent intent = new Intent(ClientActivity.this, ClientService.class);
@@ -39,7 +40,7 @@ public class ClientActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        setTheme(R.style.MainTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
 

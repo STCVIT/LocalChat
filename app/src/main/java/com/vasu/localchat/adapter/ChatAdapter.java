@@ -33,14 +33,17 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private class IncomingMessageViewHolder extends RecyclerView.ViewHolder{
 
        TextView incomingTextView;
+       TextView incomingNameTextView;
 
         public IncomingMessageViewHolder(View itemView){
             super(itemView);
             incomingTextView = itemView.findViewById(R.id.incoming_tv);
+            incomingNameTextView=itemView.findViewById(R.id.incoming_name_tv);
         }
         void bind(int position){
             MessageModel messageModel = list.get(position);
             incomingTextView.setText(messageModel.message);
+            incomingNameTextView.setText(messageModel.name);
         }
     }
 

@@ -49,7 +49,8 @@ public class ClientInputFragment extends Fragment {
                 String code=serverCodeEditText.getText().toString();
                 Log.i("code",code);
                 if(serverCodeEditText.getText().toString().trim().length()>0 && usernameEditText.getText().toString().trim().length()>0){
-                    clientActivity.startNSD("Test101");
+                    clientActivity.startNSD(serverCodeEditText.getText().toString().trim());
+                    clientActivity.name=usernameEditText.getText().toString().trim();
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.acFragment,new ChatFragment()).commit();
                 }else{
                     Toast.makeText(getContext(),"Empty input field",Toast.LENGTH_SHORT).show();

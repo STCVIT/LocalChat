@@ -30,7 +30,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 android:src="@drawable/ic_client_fragment_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -55,11 +55,13 @@
                 android:id="@+id/textInputLayout1"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="16dp"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 app:boxBackgroundColor="@color/text_input_color"
                 app:boxStrokeColor="@null"
                 app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +70,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/server_code_edit_text"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:layout_height="50dp"
                     android:background="@null"
-                    android:hint="Server Code
-">
+                    android:hint="Server Code">
 
                 </com.google.android.material.textfield.TextInputEditText>
 
@@ -81,11 +83,13 @@
                 android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="16dp"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:boxBackgroundColor="@color/text_input_color"
                 app:boxStrokeColor="@null"
+                app:hintEnabled="false"
                 app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +98,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/username_edit_text"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:layout_height="50dp"
                     android:background="@null"
                     android:hint="Username">
 
