@@ -10,6 +10,7 @@ import android.net.nsd.NsdServiceInfo;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.StrictMode;
+import android.telecom.Call;
 
 import com.vasu.localchat.R;
 import com.vasu.localchat.fragment.ChatFragment;
@@ -39,8 +40,13 @@ public class ClientActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.MainTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
 
@@ -94,5 +100,9 @@ public class ClientActivity extends AppCompatActivity {
 
     public void sendMessage(String message){
         mService.sendMessage(message);
+    }
+
+    public static void finishActivity(){
+        finishActivity();
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.transition.TransitionInflater;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +34,11 @@ public class ClientInputFragment extends Fragment {
 //    }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -51,7 +57,7 @@ public class ClientInputFragment extends Fragment {
                 if(serverCodeEditText.getText().toString().trim().length()>0 && usernameEditText.getText().toString().trim().length()>0){
                     clientActivity.startNSD(serverCodeEditText.getText().toString().trim());
                     clientActivity.name=usernameEditText.getText().toString().trim();
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.acFragment,new ChatFragment()).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left).replace(R.id.acFragment,new ChatFragment()).commit();
                 }else{
                     Toast.makeText(getContext(),"Empty input field",Toast.LENGTH_SHORT).show();
                 }

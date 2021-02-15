@@ -38,8 +38,13 @@ public class ServerActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.MainTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server);
 
@@ -63,6 +68,7 @@ public class ServerActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i("ServerActivity","destroy");
+
     }
 
     @Override

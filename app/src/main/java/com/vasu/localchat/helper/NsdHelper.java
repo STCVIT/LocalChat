@@ -4,7 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
+import android.os.CountDownTimer;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.vasu.localchat.activity.ClientActivity;
 import com.vasu.localchat.fragment.ChatFragment;
@@ -23,6 +25,7 @@ public class NsdHelper {
     private NsdManager.RegistrationListener nsdRegistrationListener;
     private NsdManager.ResolveListener nsdResolveListener;
     private NsdServiceInfo serviceInfo;
+    private int found = -1;
 
     //Constructor
     public NsdHelper(Context context,String serviceName) {
@@ -77,16 +80,32 @@ public class NsdHelper {
                 dialog[0] = ProgressDialog.show(context, "", "Discovering. Please wait...");
                 dialog[0].setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 dialog[0].create();
+                new CountDownTimer(15000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                     if(found==-1){
+                         stopDiscovery();
+                         dialog[0].cancel();
+                     }
+                    }
+                }.start();
             }
 
             @Override
             public void onDiscoveryStopped(String serviceType) {
                 Log.e(NSD_HELPER_TAG,"Service Discovery Stopped");
+                Toast.makeText(context, "Server not found. Go back to try again.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onServiceFound(NsdServiceInfo serviceInfo) {
                 if(serviceInfo.getServiceName().equals(serviceName)){
+                    found=1;
                     setServiceInfo(serviceInfo);
                     nsdManager.resolveService(serviceInfo,nsdResolveListener);
                     Log.d(NSD_HELPER_TAG, "Service Found"+serviceInfo.getPort()+":"+serviceInfo.getHost());
@@ -138,6 +157,7 @@ public class NsdHelper {
     }
 
     public void unregisterService(){
+        Log.i(NSD_HELPER_TAG,"service unregistered");
         nsdManager.unregisterService(nsdRegistrationListener);
     }
 

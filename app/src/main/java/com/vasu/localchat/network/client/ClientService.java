@@ -123,6 +123,7 @@ public class ClientService extends Service {
                 }
                 catch (Exception e){
                     Log.e(CLIENT_TAG, "Initializing socket failed", e);
+
                 }
             }
         }

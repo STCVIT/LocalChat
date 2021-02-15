@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.MainTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -24,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ServerActivity.class);
                 startActivity(intent);
+                animate();
             }
         });
 
@@ -33,7 +33,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ClientActivity.class);
                 startActivity(intent);
+                animate();
             }
         });
+    }
+
+    void animate(){
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 }

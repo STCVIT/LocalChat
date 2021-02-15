@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.TransitionInflater;
 
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -23,6 +24,7 @@ import com.vasu.localchat.activity.ClientActivity;
 import com.vasu.localchat.activity.ServerActivity;
 import com.vasu.localchat.adapter.ChatAdapter;
 import com.vasu.localchat.model.MessageModel;
+import com.vasu.localchat.util.Methods;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,8 +47,15 @@ public class ChatFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat, container, false);
     }
@@ -55,7 +64,7 @@ public class ChatFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         messagesList = new ArrayList<>();
         if(!getActivity().getLocalClassName().equals("activity.ServerActivity")) {
-            new CountDownTimer(30000,1000) {
+            new CountDownTimer(15000,1000) {
                 @Override
                 public void onTick(long l) {
                     if(connected!=-1){
@@ -80,6 +89,7 @@ public class ChatFragment extends Fragment {
                 String message = messageEditText.getText().toString();
                 if(message.trim().length()>0){
                 if(getActivity().getLocalClassName().equals("activity.ServerActivity")){
+                    Methods.hideKeyboard((ServerActivity)getActivity());
                     String hashedMessage = hash(message.trim(),getActivity().getLocalClassName());
                     try {
                         ((ServerActivity) getActivity()).mService.sendToClients(hashedMessage);
@@ -87,9 +97,11 @@ public class ChatFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }else{
+                    Methods.hideKeyboard((ClientActivity)getActivity());
                     String hashedMessage = hash(message.trim(),getActivity().getLocalClassName());
                     ((ClientActivity)getActivity()).sendMessage(hashedMessage);
                 }
+                messageEditText.setText("");
             }else{
                     Toast.makeText(getContext(),"Empty input field",Toast.LENGTH_SHORT).show();
                 }
