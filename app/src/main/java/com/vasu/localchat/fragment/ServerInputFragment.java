@@ -51,12 +51,14 @@ public class ServerInputFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         findViewById(view);
         idTv.setText(serverActivity.charId);
+//        Starts the server
         serverButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(userNameEditText.getText().toString().trim().length()>0){
                     Log.i("fragment","here");
                     try {
+//                        Calls the constructor for server service
                         serverActivity.mService.constructor(getContext(),serverActivity.charId);
                         serverActivity.name = userNameEditText.getText().toString().trim();
                         getActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left).replace(R.id.asFragment,new ChatFragment()).commit();

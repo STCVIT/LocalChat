@@ -63,11 +63,14 @@ public class ChatFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         messagesList = new ArrayList<>();
+
+//        Checks if the activity that started the fragment is ClientActivity or not
         if(!getActivity().getLocalClassName().equals("activity.ServerActivity")) {
             new CountDownTimer(15000,1000) {
                 @Override
                 public void onTick(long l) {
                     if(connected!=-1){
+//                        Starts the NSD Service
                     ((ClientActivity)getActivity()).nsdConstructor();
                     Log.i("chatFragment","started constructor");
                     cancel();
@@ -80,18 +83,24 @@ public class ChatFragment extends Fragment {
         }
         findViewById(view);
         initialize(getActivity().getLocalClassName());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(chatAdapter);
+
+//        Send Message Listener
         buttonMsgSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i("chatFragment",getActivity().getLocalClassName());
                 String message = messageEditText.getText().toString();
                 if(message.trim().length()>0){
+//                    Checks if the user has started the server
                 if(getActivity().getLocalClassName().equals("activity.ServerActivity")){
                     Methods.hideKeyboard((ServerActivity)getActivity());
+//                    Calls the hash method and hashes the message
                     String hashedMessage = hash(message.trim(),getActivity().getLocalClassName());
                     try {
+//                        Sends the message to all the clients connected to the server
                         ((ServerActivity) getActivity()).mService.sendToClients(hashedMessage);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -99,6 +108,7 @@ public class ChatFragment extends Fragment {
                 }else{
                     Methods.hideKeyboard((ClientActivity)getActivity());
                     String hashedMessage = hash(message.trim(),getActivity().getLocalClassName());
+//                    Sends the message to the server
                     ((ClientActivity)getActivity()).sendMessage(hashedMessage);
                 }
                 messageEditText.setText("");
@@ -107,6 +117,8 @@ public class ChatFragment extends Fragment {
                 }
             }
         });
+
+//        Keeps updating the recyclerview
         new CountDownTimer(Long.MAX_VALUE,2000) {
             @Override
             public void onTick(long l) {
@@ -140,6 +152,7 @@ public class ChatFragment extends Fragment {
 
     }
 
+//    A custom hash method to hash the outgoing message
     String hash(String str,String activity){
         if(activity.equals("activity.ServerActivity")){
             str = str+"##%%"+((ServerActivity)getActivity()).userId+"##%%"+((ServerActivity)getActivity()).name;
@@ -149,11 +162,14 @@ public class ChatFragment extends Fragment {
         return str;
     }
 
+
+//    A custom unHash method to un-hash the incoming message
     static String[] unHash(String message){
         String[] split = message.split("##%%");
         return split;
     }
 
+//    Adds the incoming message to the arrayList
     public static void addToList(String message){
        String[] msg = unHash(message);
        String mainMessage = msg[0];

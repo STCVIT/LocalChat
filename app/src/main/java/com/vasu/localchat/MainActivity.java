@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        Create a server
         Button clientButton = findViewById(R.id.serverButton);
         clientButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        Join a server
         Button serverButton = findViewById(R.id.clientButton);
         serverButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+//    Sliding in/out animation
 
     void animate(){
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);

@@ -42,6 +42,7 @@ public class ClientActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+//        Slide in/out animation
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
@@ -50,6 +51,7 @@ public class ClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
 
+//        Permits all threads and avoids UI crashes (only for development mode)
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -58,12 +60,6 @@ public class ClientActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        nsdHelper.stopDiscovery();
-//        nsdHelper.stopDiscovery();
-//    }
 
     public void startNSD(String str){
         nsdHelper = new NsdHelper(ClientActivity.this,str);

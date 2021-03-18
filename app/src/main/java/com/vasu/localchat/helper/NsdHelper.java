@@ -15,6 +15,7 @@ import static com.vasu.localchat.util.Constants.CLIENT_TAG;
 import static com.vasu.localchat.util.Constants.NSD_HELPER_TAG;
 import static com.vasu.localchat.util.Constants.SERVICE_TYPE;
 
+//  A helper class for Network Service Discovery
 public class NsdHelper {
 
     //Data Members
@@ -34,7 +35,7 @@ public class NsdHelper {
         this.serviceName = serviceName;
     }
 
-    //Member Function
+    //Member Functions
 
     public NsdServiceInfo getServiceInfo() {
         return serviceInfo;

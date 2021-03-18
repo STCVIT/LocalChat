@@ -24,14 +24,14 @@ public class ServerActivity extends AppCompatActivity {
     ServerInputFragment serverInputFragment;
 
    public ServerService mService;
-    boolean mBound = false;
+   boolean mBound = false;
 
    public static String charId,userId,name ;
 
 
     @Override
     protected void onStart() {
-
+//        Binds service
         super.onStart();
         Intent intent = new Intent(ServerActivity.this, ServerService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
@@ -51,6 +51,7 @@ public class ServerActivity extends AppCompatActivity {
         initialize();
         getSupportFragmentManager().beginTransaction().replace(R.id.asFragment,serverInputFragment).commit();
 
+//        Permits all threads and avoids UI crashes (only for development mode)
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 

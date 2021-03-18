@@ -15,6 +15,7 @@ import com.vasu.localchat.model.MessageModel;
 
 import java.util.ArrayList;
 
+// A typical adapter for RecyclerView
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 

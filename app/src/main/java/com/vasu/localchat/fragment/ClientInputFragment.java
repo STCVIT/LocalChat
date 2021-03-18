@@ -29,9 +29,6 @@ public class ClientInputFragment extends Fragment {
         // Required empty public constructor
     }
 
-//    void changeText(String str){
-//        ((ClientActivity)getActivity()).name=str;
-//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +46,7 @@ public class ClientInputFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         findViewById(view);
+//        Joins the server
         joinServerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
