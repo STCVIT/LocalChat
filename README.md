@@ -12,8 +12,8 @@
 
 ## Features
 
-- Create a ChatRoom on your local network.
-- Join a ChatRoom by adding the server-code.
+- Create a Chat-Room on your local network.
+- Join a Chat-Room by adding the server-code.
 
 More features coming soon!
 
@@ -28,8 +28,8 @@ More features coming soon!
 
 ## Contributors
 
-- Navdeep Chawla
-- Vasu Manhas
+- <a href="https://github.com/NavdeepChawla">Navdeep Chawla</a>
+- <a href="https://github.com/vasumanhas000">Vasu Manhas</a>
 
 ## License
 
