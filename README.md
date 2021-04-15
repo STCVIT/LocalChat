@@ -7,7 +7,7 @@
 
 ---
 
-[![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](https://drive.google.com/file/d/1qrpjX9SZbHsx3ROuNdrK5tPSoBRoRBmZ/view?usp=sharing)
+[![Download ](https://img.shields.io/badge/-Get%20the%20link%20to%20the%20App-brightgreen)](https://drive.google.com/file/d/1qrpjX9SZbHsx3ROuNdrK5tPSoBRoRBmZ/view?usp=sharing)
 
 ## Features
 
