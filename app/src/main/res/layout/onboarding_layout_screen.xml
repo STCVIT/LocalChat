@@ -36,7 +36,7 @@
         android:layout_width="0dp"
         android:autoSizeMinTextSize="14sp"
         android:maxLines="4"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
